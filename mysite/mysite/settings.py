@@ -53,13 +53,12 @@ ROOT_URLCONF = 'mysite.urls'
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 TEMPLATE_LOADERS = (
-    ('pyjade.ext.django.Loader', (
+    ('pyjade.ext.django.Loader',(
         'django.template.loaders.filesystem.Loader',
         'django.template.loaders.app_directories.Loader',
     )),
 )
 
-# isn't this line just duplicating standard functionality?
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Database
