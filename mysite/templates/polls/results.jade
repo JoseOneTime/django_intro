@@ -1,0 +1,12 @@
+h1= poll.question
+
+ul
+	- for choice in poll.choice_set.all
+		// this works, but how to include it in a string?
+		//li= choice.choice_text
+		// this also works. note lack of = sign.
+		//li #{choice.choice_text}
+		// Yay! Answer is no = sign combined with template tags!
+		li {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+
+a(href="{% url 'polls:detail' poll.id %}") Vote again?

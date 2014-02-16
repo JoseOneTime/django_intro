@@ -1,4 +1,13 @@
 h1= poll.question
-ul
+
+- if error_message
+	p: strong= error_message
+
+form(action="{% url 'polls:vote' poll.id %}", method='post')
+	- csrf_token
 	- for choice in poll.choice_set.all
-		li= choice.choice_text
+		- var choice_index = 'choice#{ forloop.counter }'
+		input(type='radio', name='choice', id=choice_index, value=choice.id)
+		label(for=choice_index)= choice.choice_text
+	br
+	input(type='submit', value='Vote')
