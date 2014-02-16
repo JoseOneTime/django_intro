@@ -51,6 +51,12 @@ ROOT_URLCONF = 'mysite.urls'
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+TEMPLATE_LOADERS = (
+    ('pyjade.ext.django.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
